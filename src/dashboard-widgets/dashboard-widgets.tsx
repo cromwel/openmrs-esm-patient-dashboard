@@ -5,6 +5,8 @@ import Parcel from "single-spa-react/parcel";
 const patientDashboardParcels = [
   // A patient dashboard widget within this git repo
   () => import("./basic-info/basic-info.parcel").then(m => m.default),
+  () => import("./visits/visits-info.parcel").then(m => m.default),
+  () => import("./vitals/vitals-info.parcel").then(m => m.default)
 ];
 
 export default function DashboardWidgets(props: DashboardWidgetsProps) {
@@ -23,6 +25,8 @@ export default function DashboardWidgets(props: DashboardWidgetsProps) {
             box-shadow: 0 10px 30px -24px #b3b3b3;
             padding: 16px;
             margin-bottom: 16px;
+            border: 1px solid black;
+            border-collapse: collapse;
           `}
           key={i}
         >
@@ -39,7 +43,7 @@ export default function DashboardWidgets(props: DashboardWidgetsProps) {
 type DashboardWidgetsProps = {
   match: {
     params: {
-      patientUuid: string,
-    }
-  }
+      patientUuid: string;
+    };
+  };
 };
